@@ -1,0 +1,86 @@
+{
+    "type": "Executable",
+    "value": null,
+    "childNodes": [
+        {
+            "type": "FunctionIdentifier",
+            "value": null,
+            "childNodes": [
+                {
+                    "type": "Identifier",
+                    "value": "filemeta",
+                    "childNodes": []
+                },
+                {
+                    "type": "FunctionIdentifier",
+                    "value": null,
+                    "childNodes": [
+                        {
+                            "type": "Identifier",
+                            "value": "title",
+                            "childNodes": []
+                        },
+                        {
+                            "type": "String",
+                            "value": "This is the title of the file",
+                            "childNodes": []
+                        }
+                    ]
+                },
+                {
+                    "type": "FunctionIdentifier",
+                    "value": null,
+                    "childNodes": [
+                        {
+                            "type": "Identifier",
+                            "value": "subtitle",
+                            "childNodes": []
+                        },
+                        {
+                            "type": "String",
+                            "value": "This is the (sub)title of the file",
+                            "childNodes": []
+                        }
+                    ]
+                },
+                {
+                    "type": "FunctionIdentifier",
+                    "value": null,
+                    "childNodes": [
+                        {
+                            "type": "Identifier",
+                            "value": "authors",
+                            "childNodes": []
+                        },
+                        {
+                            "type": "VectorBlock",
+                            "value": null,
+                            "childNodes": [
+                                {
+                                    "type": "String",
+                                    "value": "Chris Stead",
+                                    "childNodes": []
+                                },
+                                {
+                                    "type": "String",
+                                    "value": "Tyler \"Alter Ego\" Durden",
+                                    "childNodes": []
+                                },
+                                {
+                                    "type": "String",
+                                    "value": "Robert Paulsen",
+                                    "childNodes": []
+                                },
+                                {
+                                    "type": "Number",
+                                    "value": 12345,
+                                    "childNodes": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

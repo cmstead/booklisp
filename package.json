@@ -1,0 +1,25 @@
+{
+  "name": "booklisp",
+  "version": "1.0.0",
+  "description": "A small, extremely limited lisp-like DSL for book content embedding written in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha ./tests/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmstead/booklisp.git"
+  },
+  "author": "Chris Stead",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmstead/booklisp/issues"
+  },
+  "homepage": "https://github.com/cmstead/booklisp#readme",
+  "devDependencies": {
+    "approvals": "^3.0.2",
+    "approvals-config-factory": "^1.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
