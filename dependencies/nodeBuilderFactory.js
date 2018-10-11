@@ -5,15 +5,23 @@ const nodeTypes = require('./nodeTypes');
 
 function nodeBuilderFactory(lex) {
     function buildNode(nodeType) {
-        return {
+        const localNode = {
             type: nodeTypes[nodeType],
             value: null,
-            childNodes: []
+            childNodes: [],
+            evaluate: function (environment) {
+                const nodeType = nodeTypes[localNode.type];
+                const results = localNode.childNodes.map(node => node.evaluate(environment._clone()));
+
+                return environment._get(nodeType).call(environment, localNode, results);
+            }
         };
+
+        return localNode;
     }
 
     function buildFunctionNode(sourceTokens) {
-        const functionNode = buildNode(nodeTypes.FunctionIdentifier);
+        const functionNode = buildNode(nodeTypes.ExecutionBlock);
 
         functionNode.childNodes = lex(sourceTokens);
 
@@ -39,6 +47,8 @@ function nodeBuilderFactory(lex) {
             valueNode.value = sanitizeString(token);
         } else if (nodeType === nodeTypes.Number) {
             valueNode.value = Number(token);
+        } else if (nodeType === nodeTypes.Boolean) {
+            valueNode.value = token === 'True';
         } else {
             valueNode.value = token;
         }

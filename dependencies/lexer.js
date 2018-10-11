@@ -11,16 +11,25 @@ function getNodeType(token) {
         return nodeTypes.Number;
     } else if (stringPattern.test(token)) {
         return nodeTypes.String;
+    } else if (token === 'True' || token === 'False') {
+        return nodeTypes.Boolean;
     } else {
         return nodeTypes.Identifier;
     }
 }
 
+function isClosingToken(token) {
+    return token === ')' || token === ']';
+}
+
 function lex(sourceTokens) {
     let sourceNodes = [];
+    let lastToken = null;
     let token = sourceTokens.shift();
 
     while (typeof token !== 'undefined') {
+        lastToken = token;
+
         if (token === '(') {
             const functionNode = nodeBuilder.buildFunctionNode(sourceTokens);
 
@@ -29,7 +38,7 @@ function lex(sourceTokens) {
             const vectorNode = nodeBuilder.buildVectorNode(sourceTokens);
 
             sourceNodes.push(vectorNode);
-        } else if (token === ')' || token === ']') {
+        } else if (isClosingToken(token)) {
             break;
         } else {
             const nodeType = getNodeType(token);
@@ -37,6 +46,8 @@ function lex(sourceTokens) {
 
             sourceNodes.push(valueNode);
         }
+
+        if(isClosingToken)
 
         token = sourceTokens.shift();
     }

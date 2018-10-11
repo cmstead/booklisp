@@ -6,9 +6,8 @@ module.exports = bireferenceDict([
     'Executable',
     'ExecutionBlock',
     'VectorBlock',
-    'FunctionIdentifier',
+    'Boolean',
     'Identifier',
     'String',
-    'Number',
-    'Value'
+    'Number'
 ]);
