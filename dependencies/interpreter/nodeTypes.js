@@ -1,6 +1,6 @@
 'use strict';
 
-const bireferenceDict = require('./bireferenceDict');
+const bireferenceDict = require('../core/bireferenceDict');
 
 module.exports = bireferenceDict([
     'Executable',

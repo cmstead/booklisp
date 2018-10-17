@@ -2,12 +2,12 @@
 
 const fs = require('fs');
 
-const parser = require('../dependencies/parser');
-const coreEnvironmentFactory = require('../dependencies/coreEnvironmentFactory');
-const coreDefinitions = require('../dependencies/coreDefinitions');
-const extensionDefinitions = require('../dependencies/extensionDefinitions');
+const parser = require('../../dependencies/interpreter/parser');
+const coreEnvironmentFactory = require('../../dependencies/core/coreEnvironmentFactory');
+const coreDefinitions = require('../../dependencies/core/coreDefinitions');
+const extensionDefinitions = require('../../dependencies/document-tools/extensionDefinitions');
 
-require('./utils/approvals')();
+require('../utils/approvals')();
 
 describe('evaluate', function () {
 

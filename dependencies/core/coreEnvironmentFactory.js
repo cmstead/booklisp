@@ -1,6 +1,6 @@
 'use strict';
 
-const nodeTypes = require('./nodeTypes');
+const nodeTypes = require('../interpreter/nodeTypes');
 
 module.exports = function () {
     return {

@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 
-const parser = require('../dependencies/tokenizer');
+const parser = require('../../dependencies/interpreter/tokenizer');
 
-require('./utils/approvals')();
+require('../utils/approvals')();
 
 describe('tokenizer', function () {
 

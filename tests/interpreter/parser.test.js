@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 
-const parser = require('../dependencies/parser');
+const parser = require('../../dependencies/interpreter/parser');
 
-require('./utils/approvals')();
+require('../utils/approvals')();
 
 describe('parser', function () {
 

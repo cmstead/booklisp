@@ -1,5 +1,8 @@
 'use strict';
 
+const parser = require('../interpreter/parser');
+const fs = require('fs');
+
 module.exports = {
     filemeta: function(...args) {
         const metadata = this.dict.apply(this, args);
