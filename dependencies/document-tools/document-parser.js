@@ -77,24 +77,28 @@ function parse(sourceText) {
 
     while (currentToken !== null) {
         let okToParse = noparse.length === 0;
+        let noexectoken = false;
+        let pushExecToken = false;
 
-        if(okToParse && currentToken.trim() === '<!--noexec') {
+        if (currentToken.trim() === '<!--noexec') {
             noparse.push(true);
-        } else if(!okToParse && currentToken.trim() === '/noexec-->'){
+            noexectoken = true;
+            pushExecToken = noparse.length > 1;
+        } else if (currentToken.trim() === '/noexec-->') {
             noparse.pop();
-            okToParse = noparse.length === 0;
+            noexectoken = true;
+            pushExecToken = noparse.length > 0;
+        }
 
-            if(noparse.length > 0){
-                currentBlock.push(currentToken);
-            }
-
-        }else if (okToParse && currentToken.trim() === '<!--bl') {
+        if (pushExecToken) {
+            currentBlock.push(currentToken);
+        } else if (okToParse && currentToken.trim() === '<!--bl') {
             addNewNode(documentNodes, currentBlock, nodeTypes.content);
             currentBlock = [];
         } else if (okToParse && currentToken.trim() === '/bl-->') {
             addNewNode(documentNodes, currentBlock, nodeTypes.executionBlock);
             currentBlock = [];
-        } else {
+        } else if (!noexectoken) {
             currentBlock.push(currentToken);
         }
 

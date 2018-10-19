@@ -80,8 +80,8 @@ Also, if you want to write an example of a Booklisp executable block, use the no
 <!--bl
 (define! "do-not-execute" "This will not execute.")
 /bl-->
-```
 /noexec-->
+```
 
 That's it!
     
