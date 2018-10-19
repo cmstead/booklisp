@@ -19,8 +19,6 @@ if (typeof outputFile !== 'string') {
     throw new Error('Booklisp requires an output file path');
 }
 
-console.log(inputFile);
-
 const fileContent = fs.readFileSync(inputFile, { encoding: 'utf8' });
 
 pipe(

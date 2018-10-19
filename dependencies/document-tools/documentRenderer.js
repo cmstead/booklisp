@@ -25,8 +25,6 @@ function render(parsedDocument) {
         }, [])
         .join('\n');
 
-    console.log(bodyString);
-
     return `
 ${titleString}
 ${bodyString}
