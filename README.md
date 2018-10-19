@@ -39,7 +39,7 @@ Find me online:
 The best example of Booklisp is to simply look at the source files for the readme doc you are reading right now.  Here is the main source file as I write this examples file:
 
 ```
-< --bl
+<!--bl
 (filemeta
     (title "Booklisp")
     (subtitle "A Language for Building Documents"))
@@ -48,7 +48,7 @@ The best example of Booklisp is to simply look at the source files for the readm
     (chapter "./readme-source/chapters/introduction.md")
     (chapter "./readme-source/chapters/examples.md")
 )
-/bl-- >;
+/bl-->;
 ```
 
 In this example, the file metadata -- filemeta -- contains a title, "Booklisp", and a subtitle "A Language for Building Documents".  The main source file also contains a table of contents which captures information about the chapters contained within the document.
@@ -65,13 +65,23 @@ This means you can simply type what you mean and the compiler will interpret and
 Here's what a chapter file looks like:
 
 ```
-< --bl
+<!--bl
 (filemeta
     (title "My Chapter"))
 
 In this chapter, we look at an example of a chapter example. ;-)
-/bl-- >
+/bl-->
 ```
+
+Also, if you want to write an example of a Booklisp executable block, use the noexec escape sequence:
+
+```
+<!--noexec
+<!--bl
+(define! "do-not-execute" "This will not execute.")
+/bl-->
+```
+/noexec-->
 
 That's it!
     

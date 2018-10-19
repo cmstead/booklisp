@@ -76,12 +76,13 @@ function parse(sourceText) {
     let documentNodes = [];
 
     while (currentToken !== null) {
-        const okToParse = noparse.length === 0;
+        let okToParse = noparse.length === 0;
 
         if(okToParse && currentToken.trim() === '<!--noexec') {
             noparse.push(true);
         } else if(!okToParse && currentToken.trim() === '/noexec-->'){
             noparse.pop();
+            okToParse = noparse.length === 0;
 
             if(noparse.length > 0){
                 currentBlock.push(currentToken);
