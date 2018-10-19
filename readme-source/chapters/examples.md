@@ -39,9 +39,9 @@ Here's what a chapter file looks like:
 <!--bl
 (filemeta
     (title "My Chapter"))
+/bl-->
 
 In this chapter, we look at an example of a chapter example. ;-)
-/bl-->
 ```
 /noexec-->
 
