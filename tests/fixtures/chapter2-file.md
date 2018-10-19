@@ -6,4 +6,10 @@
 
 This is some content in chapter 2.
 
-## Here is another section ##
+<!--noexec
+```
+<!--bl
+(define! "noexec" "This should not execute")
+/bl-->
+```
+/noexec-->

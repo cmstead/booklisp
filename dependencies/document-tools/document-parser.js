@@ -71,14 +71,26 @@ function addNewNode(documentNodes, currentBlock, nodeType) {
 function parse(sourceText) {
     const iterableSourceLines = getIterableSourceLines(sourceText);
     let currentToken = iterableSourceLines.next();
+    let noparse = [];
     let currentBlock = [];
     let documentNodes = [];
 
     while (currentToken !== null) {
-        if (currentToken.trim() === '<!--bl') {
+        const okToParse = noparse.length === 0;
+
+        if(okToParse && currentToken.trim() === '<!--noexec') {
+            noparse.push(true);
+        } else if(!okToParse && currentToken.trim() === '/noexec-->'){
+            noparse.pop();
+
+            if(noparse.length > 0){
+                currentBlock.push(currentToken);
+            }
+
+        }else if (okToParse && currentToken.trim() === '<!--bl') {
             addNewNode(documentNodes, currentBlock, nodeTypes.content);
             currentBlock = [];
-        } else if (currentToken.trim() === '/bl-->') {
+        } else if (okToParse && currentToken.trim() === '/bl-->') {
             addNewNode(documentNodes, currentBlock, nodeTypes.executionBlock);
             currentBlock = [];
         } else {
