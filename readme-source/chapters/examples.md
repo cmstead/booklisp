@@ -14,9 +14,10 @@ The best example of Booklisp is to simply look at the source files for the readm
 
 (table-of-contents
     (chapter "./readme-source/chapters/introduction.md")
+    (chapter "./readme-source/chapters/setup-and-running.md")
     (chapter "./readme-source/chapters/examples.md")
 )
-/bl-->;
+/bl-->
 ```
 /noexec-->
 
