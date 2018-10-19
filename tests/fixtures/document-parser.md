@@ -9,9 +9,8 @@
 
 <!--bl
     (table-of-contents
-        [
-            (chapter "./tests/fixtures/chapter1-file.md")
-            (chapter "./tests/fixtures/chapter2-file.md")
-        ])
+        (chapter "./tests/fixtures/chapter1-file.md")
+        (chapter "./tests/fixtures/chapter2-file.md")
+    )
 /bl-->
 

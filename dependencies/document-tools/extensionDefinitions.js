@@ -24,10 +24,12 @@ const extensionDefinitions = {
         return this._get('tag')('authors', value);
     },
 
-    'table-of-contents': function (value) {
-        const metaTree = filemetaUtils.buildMetaTree(value);
+    'table-of-contents': function (...chapterValues) {
+        const chapters = Array.isArray(chapterValues[0]) ? chapterValues[0] : chapterValues;
+
+        const metaTree = filemetaUtils.buildMetaTree(chapters);
         const tableOfContentsResult = contentUtils.buildTableOfContents(metaTree);
-        const documentContent = contentUtils.buildDocumentContent(value);
+        const documentContent = contentUtils.buildDocumentContent(chapters);
 
         return `
 ## Table Of Contents ##

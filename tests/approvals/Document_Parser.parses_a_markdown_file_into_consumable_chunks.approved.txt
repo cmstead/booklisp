@@ -95,40 +95,34 @@
                                 "childNodes": []
                             },
                             {
-                                "type": "VectorBlock",
+                                "type": "ExecutionBlock",
                                 "value": null,
                                 "childNodes": [
                                     {
-                                        "type": "ExecutionBlock",
-                                        "value": null,
-                                        "childNodes": [
-                                            {
-                                                "type": "Identifier",
-                                                "value": "chapter",
-                                                "childNodes": []
-                                            },
-                                            {
-                                                "type": "String",
-                                                "value": "./tests/fixtures/chapter1-file.md",
-                                                "childNodes": []
-                                            }
-                                        ]
+                                        "type": "Identifier",
+                                        "value": "chapter",
+                                        "childNodes": []
                                     },
                                     {
-                                        "type": "ExecutionBlock",
-                                        "value": null,
-                                        "childNodes": [
-                                            {
-                                                "type": "Identifier",
-                                                "value": "chapter",
-                                                "childNodes": []
-                                            },
-                                            {
-                                                "type": "String",
-                                                "value": "./tests/fixtures/chapter2-file.md",
-                                                "childNodes": []
-                                            }
-                                        ]
+                                        "type": "String",
+                                        "value": "./tests/fixtures/chapter1-file.md",
+                                        "childNodes": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "ExecutionBlock",
+                                "value": null,
+                                "childNodes": [
+                                    {
+                                        "type": "Identifier",
+                                        "value": "chapter",
+                                        "childNodes": []
+                                    },
+                                    {
+                                        "type": "String",
+                                        "value": "./tests/fixtures/chapter2-file.md",
+                                        "childNodes": []
                                     }
                                 ]
                             }
