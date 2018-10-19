@@ -6,6 +6,9 @@
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha ./tests/**/*.test.js"
   },
+  "bin": {
+    "booklisp": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cmstead/booklisp.git"

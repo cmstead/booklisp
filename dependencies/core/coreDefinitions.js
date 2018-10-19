@@ -16,6 +16,15 @@ module.exports = {
         }, {});
     },
 
+    'set!': function (dict, key, value) {
+        dict[key] = value;
+        return dict;
+    },
+
+    get: function (dict, key, defaultValue) {
+        return typeof dict[key] !== 'undefined' ? dict[key] : defaultValue;
+    },
+
     tag: function(key, value) {
         return [key, value];
     }

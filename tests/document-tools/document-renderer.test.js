@@ -3,10 +3,11 @@
 const fs = require('fs');
 
 const parser = require('../../dependencies/document-tools/document-parser');
+const renderer = require('../../dependencies/document-tools/documentRenderer');
 
 require('../utils/approvals')();
 
-describe('Document Parser', function () {
+describe('Document Renderer', function () {
 
     let sourceContent;
 
@@ -16,8 +17,10 @@ describe('Document Parser', function () {
         sourceContent = fs.readFileSync(sourcePath, { encoding: 'utf8' });
     });
 
-    it('parses a markdown file into consumable chunks', function () {
+    it('produces a compiled markdown string', function () {
         const parsedDocument = parser.parse(sourceContent);
-        this.verify(JSON.stringify(parsedDocument, null, 4));
+        const compiledMarkdown = renderer.render(parsedDocument);
+
+        this.verify(JSON.stringify(compiledMarkdown, null, 4));
     });
 });

@@ -1,15 +1,41 @@
 'use strict';
 
+const booklispParser = require('../interpreter/parser');
+
 const nodeTypes = {
-    executable: 'executable',
+    document: 'document',
+    executionBlock: 'executionBlock',
     content: 'content'
 };
 
+const nodeEvaluators = {
+    [nodeTypes.document]: function (node) {
+        return function (context) {
+            return node.content
+                .map(contentNode => contentNode.evaluate(context));
+        }
+    },
+    [nodeTypes.executionBlock]: function (node) {
+        return function (context) {
+            return node.content.evaluate(context);
+        }
+    },
+    [nodeTypes.content]: function (node) {
+        return function () {
+            return node.content;
+        }
+    }
+}
+
 function buildDocumentNode(content, type) {
-    return {
-        content: content,
-        type: type
+    let documentNode = {
+        type: type,
+        content: content
     };
+
+    documentNode.evaluate = nodeEvaluators[type](documentNode);
+
+    return documentNode;
 }
 
 function rtrim(value) {
@@ -24,9 +50,19 @@ function getIterableSourceLines(sourceText) {
     }
 }
 
+function prepareContent(currentBlock, nodeType) {
+    const sourceString = currentBlock.join('\n');
+
+    if (nodeType === 'content') {
+        return sourceString;
+    } else {
+        return booklispParser.parse(sourceString);
+    }
+}
+
 function addNewNode(documentNodes, currentBlock, nodeType) {
     if (currentBlock.length > 0) {
-        const blockString = currentBlock.join('\n');
+        const blockString = prepareContent(currentBlock, nodeType);
         const blockNode = buildDocumentNode(blockString, nodeType);
         documentNodes.push(blockNode);
     }
@@ -42,8 +78,8 @@ function parse(sourceText) {
         if (currentToken.trim() === '<!--bl') {
             addNewNode(documentNodes, currentBlock, nodeTypes.content);
             currentBlock = [];
-        } else if(currentToken.trim() === '/bl-->') {
-            addNewNode(documentNodes, currentBlock, nodeTypes.executable);
+        } else if (currentToken.trim() === '/bl-->') {
+            addNewNode(documentNodes, currentBlock, nodeTypes.executionBlock);
             currentBlock = [];
         } else {
             currentBlock.push(currentToken);
@@ -54,7 +90,7 @@ function parse(sourceText) {
 
     addNewNode(documentNodes, currentBlock, nodeTypes.content);
 
-    return documentNodes;
+    return buildDocumentNode(documentNodes, 'document');
 }
 
 module.exports = {
