@@ -4,11 +4,11 @@
 
 ## Table Of Contents ##
 
-- Chapter 1: Introduction
-- Chapter 2: Setup and Running
-- Chapter 3: Examples
-- Chapter 4: To Dos
-- Chapter 5: Release History
+- [Chapter 1: Introduction](#user-content-introduction)
+- [Chapter 2: Setup and Running](#user-content-setup-and-running)
+- [Chapter 3: Examples](#user-content-examples)
+- [Chapter 4: To Dos](#user-content-to-dos)
+- [Chapter 5: Release History](#user-content-release-history)
 
 ## Introduction ##
 
@@ -112,9 +112,9 @@ Here's what a chapter file looks like:
 <!--bl
 (filemeta
     (title "My Chapter"))
+/bl-->
 
 In this chapter, we look at an example of a chapter example. ;-)
-/bl-->
 ```
 
 Also, if you want to write an example of a Booklisp executable block, use the noexec escape sequence:

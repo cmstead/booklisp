@@ -3,10 +3,14 @@
 const documentUtils = require('./documentUtils');
 const filemetaUtils = require('./filemetaUtils');
 
+function buildLinkSlug(title) {
+    return `user-content-${title.toLowerCase().replace(/\s/g, '-')}`;
+}
+
 function buildTableOfContents(metaTree) {
     return metaTree
         .reduce(function (result, metaNode, index) {
-            return `${result}\n- Chapter ${index + 1}: ${metaNode.filemeta.title}`
+            return `${result}\n- [Chapter ${index + 1}: ${metaNode.filemeta.title}](#${buildLinkSlug(metaNode.filemeta.title)})`
         }, '');
 }
 

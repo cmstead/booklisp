@@ -4,6 +4,7 @@
   "description": "A small, extremely limited lisp-like DSL for book content embedding written in Javascript",
   "main": "index.js",
   "scripts": {
+    "build": "node ./index.js ./readme-source/readme.md ./README.md",
     "test": "node ./node_modules/mocha/bin/mocha ./tests/**/*.test.js"
   },
   "bin": {
