@@ -47,6 +47,15 @@ ${documentContent.join('\n')}
         );
     },
 
+    section: function (value) {
+        const parsedContent = this._get('import-file')(value);
+
+        return this._get('dict')(
+            this._get('tag')('sectionType', 'section'),
+            this._get('tag')('sectionContent', parsedContent),
+        );
+    },
+
     'import-file': function (value) {
         const fileContent = fs.readFileSync(value, { encoding: 'utf8' });
         const environment = documentEnvironmentFactory

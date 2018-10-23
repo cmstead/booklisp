@@ -1,0 +1,10 @@
+<!--bl
+(filemeta
+    (title "Not Rendered In Table of Contents"))
+/bl-->
+
+This is a test of stuff.
+
+<!--
+(chapter "./tests/fixtures/chapter1-file.md")
+/bl-->

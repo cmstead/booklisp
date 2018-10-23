@@ -10,7 +10,10 @@
 <!--bl
     (table-of-contents
         (chapter "./tests/fixtures/chapter1-file.md")
-        (chapter "./tests/fixtures/chapter2-file.md")
+        (section "./tests/fixtures/chapter2-file.md")
     )
 /bl-->
 
+<!--bl
+    (section "./tests/fixtures/section-no-table-of-contents.md")
+/bl-->

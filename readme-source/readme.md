@@ -4,10 +4,10 @@
     (subtitle "A Language for Building Documents"))
 
 (table-of-contents
-    (chapter "./readme-source/chapters/introduction.md")
-    (chapter "./readme-source/chapters/setup-and-running.md")
-    (chapter "./readme-source/chapters/examples.md")
-    (chapter "./readme-source/chapters/todos.md")
-    (chapter "./readme-source/chapters/release-history.md")
+    (section "./readme-source/sections/introduction.md")
+    (section "./readme-source/sections/setup-and-running.md")
+    (section "./readme-source/sections/examples.md")
+    (section "./readme-source/sections/todos.md")
+    (section "./readme-source/sections/release-history.md")
 )
 /bl-->

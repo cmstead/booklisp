@@ -45,6 +45,21 @@ In this chapter, we look at an example of a chapter example. ;-)
 ```
 /noexec-->
 
+Content can be included as either a section or a chapter, both inside and outside the table of contents:
+
+<!--noexec
+```
+<!--bl
+(table-of-contents
+    (chapter "./myChapter.md")
+    (section "./mySection.md"))
+
+(chapter "./notInTableOfContentsChapter.md")
+(section "./notInTableOfContentsSection.md")
+/bl-->
+```
+/noexec-->
+
 Also, if you want to write an example of a Booklisp executable block, use the noexec escape sequence:
 
 <!--noexec

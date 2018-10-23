@@ -6,6 +6,35 @@ const extensionDefinitions = require('./extensionDefinitions');
 
 const filemetaUtils = require('./filemetaUtils');
 const documentUtils = require('./documentUtils');
+const contentUtils = require('./contentUtils');
+
+function evaluateUnrenderedContent(value) {
+    if (typeof value === 'string') {
+        return value;
+    } else if (typeof value === 'object' && value !== null && typeof value.sectionType === 'string') {
+        return contentUtils.buildFileContent(value);
+    } else {
+        return null;
+    }
+}
+
+function isContentString(contentValue) {
+    return typeof contentValue === 'string'
+}
+
+function appendContentValue(result, contentValue) {
+    let bodyValues;
+
+    if (typeof contentValue === 'string') {
+        bodyValues = [contentValue]
+    } else {
+        bodyValues = contentValue
+            .map(evaluateUnrenderedContent)
+            .filter(isContentString);
+    }
+
+    return result.concat(bodyValues);
+}
 
 function render(parsedDocument) {
     const documentEnvironment = coreEnvironmentFactory()
@@ -17,12 +46,7 @@ function render(parsedDocument) {
 
     const titleString = documentUtils.buildTitle('document', documentMeta);
     const bodyString = evaluatedDocument
-        .reduce(function (result, contentValue) {
-            const bodyValues = typeof contentValue === 'string'
-                ? [contentValue]
-                : contentValue.filter(value => typeof value === 'string');
-            return result.concat(bodyValues);
-        }, [])
+        .reduce(appendContentValue, [])
         .join('\n');
 
     return `

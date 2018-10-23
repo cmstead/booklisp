@@ -4,13 +4,13 @@
 
 ## Table Of Contents ##
 
-- [Chapter 1: Introduction](#user-content-introduction)
-- [Chapter 2: Setup and Running](#user-content-setup-and-running)
-- [Chapter 3: Examples](#user-content-examples)
-- [Chapter 4: To Dos](#user-content-to-dos)
-- [Chapter 5: Release History](#user-content-release-history)
+- [Section 1: Introduction](#user-content-introduction)
+- [Section 2: Setup and Running](#user-content-setup-and-running)
+- [Section 3: Examples](#user-content-examples)
+- [Section 4: To Dos](#user-content-to-dos)
+- [Section 5: Release History](#user-content-release-history)
 
-## Introduction ##
+### Introduction ###
 
 #### What Booklisp Is ####
 
@@ -37,7 +37,7 @@ Find me online:
 - [ChrisStead.com](http://www.chrisstead.com)
     
 
-## Setup and Running ##
+### Setup and Running ###
 
 ### Setup ###
 
@@ -77,7 +77,7 @@ childProcess.exec('booklisp ./readme-source/readme.md ./README.md', function(err
 That's all there is to know!
     
 
-## Examples ##
+### Examples ###
 
 The best example of Booklisp is to simply look at the source files for the readme doc you are reading right now.  Here is the main source file as I write this examples file:
 
@@ -117,6 +117,19 @@ Here's what a chapter file looks like:
 In this chapter, we look at an example of a chapter example. ;-)
 ```
 
+Content can be included as either a section or a chapter, both inside and outside the table of contents:
+
+```
+<!--bl
+(table-of-contents
+    (chapter "./myChapter.md")
+    (section "./mySection.md"))
+
+(chapter "./notInTableOfContentsChapter.md")
+(section "./notInTableOfContentsSection.md")
+/bl-->
+```
+
 Also, if you want to write an example of a Booklisp executable block, use the noexec escape sequence:
 
 ```
@@ -130,36 +143,41 @@ Also, if you want to write an example of a Booklisp executable block, use the no
 That's it!
     
 
-## To Dos ##
+### To Dos ###
 
 Upcoming Todos:
+- [x] Section (non-chapter) content
+- [x] Standalone section and chapter content (no table-of-contents function required)
 - [ ] Bibliographic Tooling
-- [ ] Section (non-chapter) content
-- [ ] Standalone section and chapter content (no table-of-contents function required)
-- [ ] Non-chapter table of contents items, e.g. introduction, appendix, etc.
+- [ ] Non-chapter/section table of contents items, e.g. introduction, appendix, etc.
     
 
-## Release History ##
+### Release History ###
+
+**v1.3.0**
+
+- Introduced section type content
+- Renders sections and chapters from outside a table of contents
 
 **v1.2.3**
 
-First readme complete
+- First readme complete
 
 **v1.2.2**
 
-Fixed bug in noexec command
+- Fixed bug in noexec command
 
 **1.2.0**
 
-Introduced noexec command
+- Introduced noexec command
 
 **1.1.0**
 
-Removed requirement that table-of-contents receive a vector of chapters
+- Removed requirement that table-of-contents receive a vector of chapters
 
 **1.0.0**
 
-First release
+- First release
     
 
     

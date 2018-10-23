@@ -116,7 +116,7 @@
                                 "childNodes": [
                                     {
                                         "type": "Identifier",
-                                        "value": "chapter",
+                                        "value": "section",
                                         "childNodes": []
                                     },
                                     {
@@ -133,7 +133,32 @@
         },
         {
             "type": "content",
-            "content": "\n"
+            "content": ""
+        },
+        {
+            "type": "executionBlock",
+            "content": {
+                "type": "Executable",
+                "value": null,
+                "childNodes": [
+                    {
+                        "type": "ExecutionBlock",
+                        "value": null,
+                        "childNodes": [
+                            {
+                                "type": "Identifier",
+                                "value": "section",
+                                "childNodes": []
+                            },
+                            {
+                                "type": "String",
+                                "value": "./tests/fixtures/section-no-table-of-contents.md",
+                                "childNodes": []
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }

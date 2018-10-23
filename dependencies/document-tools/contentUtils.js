@@ -7,10 +7,23 @@ function buildLinkSlug(title) {
     return `user-content-${title.toLowerCase().replace(/\s/g, '-')}`;
 }
 
+const contentChunkLabels = {
+    section: 'Section',
+    chapter: 'Chapter'
+};
+
 function buildTableOfContents(metaTree) {
+    const currentChunkIndex = {
+        section: 0,
+        chapter: 0
+    };
+
     return metaTree
         .reduce(function (result, metaNode, index) {
-            return `${result}\n- [Chapter ${index + 1}: ${metaNode.filemeta.title}](#${buildLinkSlug(metaNode.filemeta.title)})`
+            const chunkIndex = ++currentChunkIndex[metaNode.type];
+            const chunkLabel = contentChunkLabels[metaNode.type];
+
+            return `${result}\n- [${chunkLabel} ${chunkIndex}: ${metaNode.filemeta.title}](#${buildLinkSlug(metaNode.filemeta.title)})`
         }, '');
 }
 
@@ -18,9 +31,39 @@ function constructFilemetaContent(contentType, filemeta) {
     return documentUtils.buildTitle(contentType, filemeta);
 }
 
+
+
+function isContentNode(contentValue) {
+    const matchesNodePattern = typeof contentValue === 'object'
+        && contentValue !== null
+        && typeof contentValue.sectionType === 'string';
+
+    return matchesNodePattern;
+}
+
+function contentRollup(contentValue) {
+
+    if (typeof contentValue === 'string') {
+        return contentValue;
+    } else if (Array.isArray(contentValue)) {
+        const contentNode = contentValue.find(isContentNode);
+
+        return Boolean(contentNode) && contentNode !== null ? buildFileContent(contentNode) : null;
+    } else {
+        return null;
+    }
+}
+
+function isContentString(contentValue) {
+    return typeof contentValue === 'string';
+}
+
 function buildFileContent(contentNode) {
     const filemeta = filemetaUtils.findFilemeta(contentNode);
-    const stringValues = contentNode.sectionContent.filter(value => typeof value === 'string');
+    const stringValues = contentNode.sectionContent
+        .map(contentRollup)
+        .filter(isContentString);
+
     const markdownContent = stringValues.join('\n');
 
     const titleContent = constructFilemetaContent(contentNode.sectionType, filemeta);
