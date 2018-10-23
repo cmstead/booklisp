@@ -46,9 +46,9 @@ function contentRollup(contentValue) {
     if (typeof contentValue === 'string') {
         return contentValue;
     } else if (Array.isArray(contentValue)) {
-        const contentNode = contentValue.find(isContentNode);
+        const contentNodes = contentValue.filter(isContentNode);
 
-        return Boolean(contentNode) && contentNode !== null ? buildFileContent(contentNode) : null;
+        return contentNodes.length > 0 ? contentNodes.map(buildFileContent).join('\n') : null;
     } else {
         return null;
     }
