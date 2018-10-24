@@ -10,7 +10,7 @@
 - [Section 4: To Dos](#user-content-to-dos)
 - [Section 5: Release History](#user-content-release-history)
 
-### Introduction ###
+## Introduction ##
 
 #### What Booklisp Is ####
 
@@ -37,7 +37,7 @@ Find me online:
 - [ChrisStead.com](http://www.chrisstead.com)
     
 
-### Setup and Running ###
+## Setup and Running ##
 
 ### Setup ###
 
@@ -77,7 +77,7 @@ childProcess.exec('booklisp ./readme-source/readme.md ./README.md', function(err
 That's all there is to know!
     
 
-### Examples ###
+## Examples ##
 
 The best example of Booklisp is to simply look at the source files for the readme doc you are reading right now.  Here is the main source file as I write this examples file:
 
@@ -88,11 +88,12 @@ The best example of Booklisp is to simply look at the source files for the readm
     (subtitle "A Language for Building Documents"))
 
 (table-of-contents
-    (chapter "./readme-source/chapters/introduction.md")
-    (chapter "./readme-source/chapters/setup-and-running.md")
-    (chapter "./readme-source/chapters/examples.md")
-)
-/bl-->
+    (section-main "./readme-source/sections/introduction.md")
+    (section-main "./readme-source/sections/setup-and-running.md")
+    (section-main "./readme-source/sections/examples.md")
+    (section-main "./readme-source/sections/todos.md")
+    (section-main "./readme-source/sections/release-history.md")
+)/bl-->
 ```
 
 In this example, the file metadata -- filemeta -- contains a title, "Booklisp", and a subtitle "A Language for Building Documents".  The main source file also contains a table of contents which captures information about the chapters contained within the document.
@@ -102,11 +103,11 @@ Each of the identifiers here is a function:
 - title
 - subtitle
 - table-of-contents
-- chapter
+- section-main
 
 This means you can simply type what you mean and the compiler will interpret and create your document. Each document must contain a filemeta expression. All arguments to filemeta are optional.
 
-Here's what a chapter file looks like:
+Here's what a section-main file looks like:
 
 ```
 <!--bl
@@ -114,18 +115,20 @@ Here's what a chapter file looks like:
     (title "My Chapter"))
 /bl-->
 
-In this chapter, we look at an example of a chapter example. ;-)
+In this section, we look at an example of a section-main. ;-)
 ```
 
-Content can be included as either a section or a chapter, both inside and outside the table of contents:
+Content can be included as either a section, section-main, or chapter; both inside and outside the table of contents:
 
 ```
 <!--bl
 (table-of-contents
     (chapter "./myChapter.md")
+    (section-main "./mySectionMain.md"))
     (section "./mySection.md"))
 
 (chapter "./notInTableOfContentsChapter.md")
+(section-main "./notInTableOfContentsSectionMain.md")
 (section "./notInTableOfContentsSection.md")
 /bl-->
 ```
@@ -143,7 +146,7 @@ Also, if you want to write an example of a Booklisp executable block, use the no
 That's it!
     
 
-### To Dos ###
+## To Dos ##
 
 Upcoming Todos:
 - [x] Section (non-chapter) content
@@ -152,11 +155,15 @@ Upcoming Todos:
 - [ ] Non-chapter/section table of contents items, e.g. introduction, appendix, etc.
     
 
-### Release History ###
+## Release History ##
+
+**v1.4.0**
+
+- Introduced `section-main` type content
 
 **v1.3.0**
 
-- Introduced section type content
+- Introduced `section` type content
 - Renders sections and chapters from outside a table of contents
 
 **v1.2.3**

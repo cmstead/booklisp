@@ -3,6 +3,7 @@
 const titleFormatters = {
     document: '#',
     chapter: '##',
+    "section-main": '##',
     section: '###',
     subtitle: '####'
 }
@@ -13,10 +14,12 @@ function buildTitleString(type, value) {
     return `${titleFormatter} ${value} ${titleFormatter}`;
 }
 
-function buildTitle(contentType, filemeta) {
-    const titleFormatter = contentType === 'chapter' ? '##' : '###';
-    const subtitleFormatter = '####';
+function isMainContentType(contentType) {
+    return contentType === 'chapter'
+        || contentType === 'section-main';
+}
 
+function buildTitle(contentType, filemeta) {
     let titleValues = [];
 
     if (typeof filemeta.filemeta.title === 'string') {

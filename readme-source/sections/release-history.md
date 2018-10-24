@@ -3,9 +3,13 @@
     (title "Release History"))
 /bl-->
 
+**v1.4.0**
+
+- Introduced `section-main` type content
+
 **v1.3.0**
 
-- Introduced section type content
+- Introduced `section` type content
 - Renders sections and chapters from outside a table of contents
 
 **v1.2.3**

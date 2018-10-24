@@ -12,6 +12,10 @@ const contentChunkLabels = {
     chapter: 'Chapter'
 };
 
+function getChunkType (metaNodeType) {
+    return metaNodeType === 'chapter' ? 'chapter' : 'section';
+}
+
 function buildTableOfContents(metaTree) {
     const currentChunkIndex = {
         section: 0,
@@ -19,9 +23,10 @@ function buildTableOfContents(metaTree) {
     };
 
     return metaTree
-        .reduce(function (result, metaNode, index) {
-            const chunkIndex = ++currentChunkIndex[metaNode.type];
-            const chunkLabel = contentChunkLabels[metaNode.type];
+        .reduce(function (result, metaNode) {
+            const chunkType = getChunkType(metaNode.type);
+            const chunkIndex = ++currentChunkIndex[chunkType];
+            const chunkLabel = contentChunkLabels[chunkType];
 
             return `${result}\n- [${chunkLabel} ${chunkIndex}: ${metaNode.filemeta.title}](#${buildLinkSlug(metaNode.filemeta.title)})`
         }, '');

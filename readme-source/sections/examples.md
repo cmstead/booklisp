@@ -13,11 +13,12 @@ The best example of Booklisp is to simply look at the source files for the readm
     (subtitle "A Language for Building Documents"))
 
 (table-of-contents
-    (chapter "./readme-source/chapters/introduction.md")
-    (chapter "./readme-source/chapters/setup-and-running.md")
-    (chapter "./readme-source/chapters/examples.md")
-)
-/bl-->
+    (section-main "./readme-source/sections/introduction.md")
+    (section-main "./readme-source/sections/setup-and-running.md")
+    (section-main "./readme-source/sections/examples.md")
+    (section-main "./readme-source/sections/todos.md")
+    (section-main "./readme-source/sections/release-history.md")
+)/bl-->
 ```
 /noexec-->
 
@@ -28,11 +29,11 @@ Each of the identifiers here is a function:
 - title
 - subtitle
 - table-of-contents
-- chapter
+- section-main
 
 This means you can simply type what you mean and the compiler will interpret and create your document. Each document must contain a filemeta expression. All arguments to filemeta are optional.
 
-Here's what a chapter file looks like:
+Here's what a section-main file looks like:
 
 <!--noexec
 ```
@@ -41,20 +42,22 @@ Here's what a chapter file looks like:
     (title "My Chapter"))
 /bl-->
 
-In this chapter, we look at an example of a chapter example. ;-)
+In this section, we look at an example of a section-main. ;-)
 ```
 /noexec-->
 
-Content can be included as either a section or a chapter, both inside and outside the table of contents:
+Content can be included as either a section, section-main, or chapter; both inside and outside the table of contents:
 
 <!--noexec
 ```
 <!--bl
 (table-of-contents
     (chapter "./myChapter.md")
+    (section-main "./mySectionMain.md"))
     (section "./mySection.md"))
 
 (chapter "./notInTableOfContentsChapter.md")
+(section-main "./notInTableOfContentsSectionMain.md")
 (section "./notInTableOfContentsSection.md")
 /bl-->
 ```

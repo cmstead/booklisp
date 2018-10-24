@@ -116,7 +116,7 @@
                                 "childNodes": [
                                     {
                                         "type": "Identifier",
-                                        "value": "section",
+                                        "value": "section-main",
                                         "childNodes": []
                                     },
                                     {

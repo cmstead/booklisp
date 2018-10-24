@@ -6,6 +6,17 @@ const filemetaUtils = require('./filemetaUtils');
 const contentUtils = require('./contentUtils');
 const fs = require('fs');
 
+function sectionContent(typeTag) {
+    return function (value) {
+        const parsedContent = this._get('import-file')(value);
+
+        return this._get('dict')(
+            this._get('tag')('sectionType', typeTag),
+            this._get('tag')('sectionContent', parsedContent),
+        );
+    }
+}
+
 const extensionDefinitions = {
     filemeta: function (...args) {
         const metadata = this._get('dict').apply(this, args);
@@ -38,23 +49,9 @@ ${documentContent.join('\n')}
 `;
     },
 
-    chapter: function (value) {
-        const parsedContent = this._get('import-file')(value);
-
-        return this._get('dict')(
-            this._get('tag')('sectionType', 'chapter'),
-            this._get('tag')('sectionContent', parsedContent),
-        );
-    },
-
-    section: function (value) {
-        const parsedContent = this._get('import-file')(value);
-
-        return this._get('dict')(
-            this._get('tag')('sectionType', 'section'),
-            this._get('tag')('sectionContent', parsedContent),
-        );
-    },
+    chapter: sectionContent('chapter'),
+    section: sectionContent('section'),
+    "section-main": sectionContent('section-main'),
 
     'import-file': function (value) {
         const fileContent = fs.readFileSync(value, { encoding: 'utf8' });
