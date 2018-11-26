@@ -143,6 +143,16 @@ Also, if you want to write an example of a Booklisp executable block, use the no
 /noexec-->
 ```
 
+**Inserting Build Messages**
+
+If you want to print something out during the process of building, a build message can be inserted:
+
+```
+<!--bl
+(build-message "This is a build message")
+/bl-->
+```
+
 That's it!
     
 

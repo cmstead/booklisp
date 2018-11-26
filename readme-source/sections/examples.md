@@ -1,6 +1,8 @@
 <!--bl
 (filemeta
     (title "Examples"))
+
+(build-message "Adding examples documentation")
 /bl-->
 
 The best example of Booklisp is to simply look at the source files for the readme doc you are reading right now.  Here is the main source file as I write this examples file:
@@ -72,6 +74,18 @@ Also, if you want to write an example of a Booklisp executable block, use the no
 (define! "do-not-execute" "This will not execute.")
 /bl-->
 /noexec-->
+```
+/noexec-->
+
+**Inserting Build Messages**
+
+If you want to print something out during the process of building, a build message can be inserted:
+
+<!--noexec
+```
+<!--bl
+(build-message "This is a build message")
+/bl-->
 ```
 /noexec-->
 

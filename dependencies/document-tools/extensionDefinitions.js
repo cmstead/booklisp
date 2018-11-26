@@ -35,6 +35,16 @@ const extensionDefinitions = {
         return this._get('tag')('authors', value);
     },
 
+    'build-message': function (message) {
+        console.log(`
+******** Build Message     ********
+
+${message}
+
+******** End Build Message ********
+`);
+    },
+
     'table-of-contents': function (...chapterValues) {
         const chapters = Array.isArray(chapterValues[0]) ? chapterValues[0] : chapterValues;
 
