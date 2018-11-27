@@ -1,12 +1,13 @@
 'use strict';
 
 const fs = require('fs');
+const container = require('../../container');
 
-const parser = require('../../dependencies/document-tools/document-parser');
+const parser = container.build('documentParser');
 
-const coreEnvironmentFactory = require('../../dependencies/core/coreEnvironmentFactory');
-const coreDefinitions = require('../../dependencies/core/coreDefinitions');
-const extensionDefinitions = require('../../dependencies/document-tools/extensionDefinitions');
+const coreEnvironmentFactory = container.build('coreEnvironmentFactory');
+const coreDefinitions = container.build('coreDefinitions');
+const extensionDefinitions = container.build('extensionDefinitions');
 
 require('../utils/approvals')();
 

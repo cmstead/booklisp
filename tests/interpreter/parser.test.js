@@ -1,8 +1,10 @@
 'use strict';
 
+const container = require('../../container');
+
 const fs = require('fs');
 
-const parser = require('../../dependencies/interpreter/parser');
+const parser = container.build('parser');
 
 require('../utils/approvals')();
 

@@ -25,5 +25,8 @@
     "approvals-config-factory": "^1.0.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "dject": "^1.10.0"
   }
 }

@@ -1,8 +1,9 @@
 'use strict';
 
 const fs = require('fs');
+const container = require('../../container');
 
-const parser = require('../../dependencies/interpreter/tokenizer');
+const tokenizer = container.build('tokenizer');
 
 require('../utils/approvals')();
 
@@ -21,7 +22,7 @@ describe('tokenizer', function () {
     describe('tokenize', function () {
         
         it('tokenizes filemeta source correctly', function() {
-            const filemetaTokens = parser.tokenize(filemetaSource);
+            const filemetaTokens = tokenizer.tokenize(filemetaSource);
 
             this.verify(JSON.stringify(filemetaTokens, null, 4));
         });

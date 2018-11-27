@@ -1,13 +1,17 @@
-'use strict';
 
-const bireferenceDict = require('../core/bireferenceDict');
+function nodeTypes(bireferenceDict) {
+    'use strict';
 
-module.exports = bireferenceDict([
-    'Executable',
-    'ExecutionBlock',
-    'VectorBlock',
-    'Boolean',
-    'Identifier',
-    'String',
-    'Number'
-]);
+    return bireferenceDict([
+        'Executable',
+        'ExecutionBlock',
+        'VectorBlock',
+        'Boolean',
+        'Identifier',
+        'String',
+        'Number'
+    ]);
+
+}
+
+module.exports = nodeTypes;

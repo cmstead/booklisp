@@ -1,19 +1,26 @@
-'use strict';
+function parser(
+    lexer,
+    nodeTypes,
+    nodeBuilderFactory,
+    tokenizer
+) {
+    'use strict';
 
-const tokenizer = require('./tokenizer');
-const nodeTypes = require('./nodeTypes');
-const { lex } = require('./lexer');
-const nodeBuilder = require('./nodeBuilderFactory')(lex);
+    const { lex } = lexer;
+    const nodeBuilder = nodeBuilderFactory(lex);
 
-function parse(source) {
-    const sourceTokens = tokenizer.tokenize(source);
-    const executableNode = nodeBuilder.buildNode(nodeTypes.Executable);
+    function parse(source) {
+        const sourceTokens = tokenizer.tokenize(source);
+        const executableNode = nodeBuilder.buildNode(nodeTypes.Executable);
 
-    executableNode.childNodes = lex(sourceTokens);
+        executableNode.childNodes = lex(sourceTokens);
 
-    return executableNode;
+        return executableNode;
+    }
+
+    return {
+        parse: parse
+    }
 }
 
-module.exports = {
-    parse: parse
-}
+module.exports = parser;

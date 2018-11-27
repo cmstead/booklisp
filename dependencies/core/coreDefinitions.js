@@ -1,31 +1,35 @@
-'use strict';
+function coreDefinitions() {
+    'use strict';
 
-module.exports = {
-    "define!": function(key, value) {
-        this._define(key, () => value);
-    },
+    return {
+        "define!": function (key, value) {
+            this._define(key, () => value);
+        },
 
-    dict: function(...args) {
-        return args.reduce(function(fileMetadata, metaTuple){
-            const key = metaTuple[0];
-            const value = metaTuple[1];
+        dict: function (...args) {
+            return args.reduce(function (fileMetadata, metaTuple) {
+                const key = metaTuple[0];
+                const value = metaTuple[1];
 
-            fileMetadata[key] = value;
+                fileMetadata[key] = value;
 
-            return fileMetadata;
-        }, {});
-    },
+                return fileMetadata;
+            }, {});
+        },
 
-    'set!': function (dict, key, value) {
-        dict[key] = value;
-        return dict;
-    },
+        'set!': function (dict, key, value) {
+            dict[key] = value;
+            return dict;
+        },
 
-    get: function (dict, key, defaultValue) {
-        return typeof dict[key] !== 'undefined' ? dict[key] : defaultValue;
-    },
+        get: function (dict, key, defaultValue) {
+            return typeof dict[key] !== 'undefined' ? dict[key] : defaultValue;
+        },
 
-    tag: function(key, value) {
-        return [key, value];
+        tag: function (key, value) {
+            return [key, value];
+        }
     }
 }
+
+module.exports = coreDefinitions;

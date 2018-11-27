@@ -1,14 +1,18 @@
-'use strict';
+function documentEnvironmentFactory(
+    coreEnvironmentFactory,
+    coreDefinitions
+) {
+    'use strict';
 
-const coreEnvironmentFactory = require('../core/coreEnvironmentFactory');
-const coreDefinitions = require('../core/coreDefinitions');
+    function buildBaseEnvironment() {
+        return coreEnvironmentFactory()
+            ._merge(coreDefinitions);
+    }
 
+    return {
+        buildBaseEnvironment: buildBaseEnvironment
+    }
 
-function buildBaseEnvironment() {
-    return coreEnvironmentFactory()
-        ._merge(coreDefinitions);
 }
 
-module.exports = {
-    buildBaseEnvironment: buildBaseEnvironment
-}
+module.exports = documentEnvironmentFactory;

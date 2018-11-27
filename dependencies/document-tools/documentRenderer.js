@@ -1,60 +1,64 @@
-'use strict';
+function documentRenderer(
+    coreEnvironmentFactory,
+    coreDefinitions,
+    extensionDefinitions,
 
-const coreEnvironmentFactory = require('../core/coreEnvironmentFactory');
-const coreDefinitions = require('../core/coreDefinitions');
-const extensionDefinitions = require('./extensionDefinitions');
+    filemetaUtils,
+    documentUtils,
+    contentUtils
+) {
+    'use strict';
 
-const filemetaUtils = require('./filemetaUtils');
-const documentUtils = require('./documentUtils');
-const contentUtils = require('./contentUtils');
-
-function evaluateUnrenderedContent(value) {
-    if (typeof value === 'string') {
-        return value;
-    } else if (typeof value === 'object' && value !== null && typeof value.sectionType === 'string') {
-        return contentUtils.buildFileContent(value);
-    } else {
-        return null;
-    }
-}
-
-function isContentString(contentValue) {
-    return typeof contentValue === 'string'
-}
-
-function appendContentValue(result, contentValue) {
-    let bodyValues;
-
-    if (typeof contentValue === 'string') {
-        bodyValues = [contentValue]
-    } else {
-        bodyValues = contentValue
-            .map(evaluateUnrenderedContent)
-            .filter(isContentString);
+    function evaluateUnrenderedContent(value) {
+        if (typeof value === 'string') {
+            return value;
+        } else if (typeof value === 'object' && value !== null && typeof value.sectionType === 'string') {
+            return contentUtils.buildFileContent(value);
+        } else {
+            return null;
+        }
     }
 
-    return result.concat(bodyValues);
-}
+    function isContentString(contentValue) {
+        return typeof contentValue === 'string'
+    }
 
-function render(parsedDocument) {
-    const documentEnvironment = coreEnvironmentFactory()
-        ._merge(coreDefinitions)
-        ._merge(extensionDefinitions);
+    function appendContentValue(result, contentValue) {
+        let bodyValues;
 
-    const evaluatedDocument = parsedDocument.evaluate(documentEnvironment);
-    const documentMeta = filemetaUtils.findFilemeta({ sectionContent: evaluatedDocument });
+        if (typeof contentValue === 'string') {
+            bodyValues = [contentValue]
+        } else {
+            bodyValues = contentValue
+                .map(evaluateUnrenderedContent)
+                .filter(isContentString);
+        }
 
-    const titleString = documentUtils.buildTitle('document', documentMeta);
-    const bodyString = evaluatedDocument
-        .reduce(appendContentValue, [])
-        .join('\n');
+        return result.concat(bodyValues);
+    }
 
-    return `
+    function render(parsedDocument) {
+        const documentEnvironment = coreEnvironmentFactory()
+            ._merge(coreDefinitions)
+            ._merge(extensionDefinitions);
+
+        const evaluatedDocument = parsedDocument.evaluate(documentEnvironment);
+        const documentMeta = filemetaUtils.findFilemeta({ sectionContent: evaluatedDocument });
+
+        const titleString = documentUtils.buildTitle('document', documentMeta);
+        const bodyString = evaluatedDocument
+            .reduce(appendContentValue, [])
+            .join('\n');
+
+        return `
 ${titleString}
 ${bodyString}
     `;
+    }
+
+    return {
+        render: render
+    }
 }
 
-module.exports = {
-    render: render
-}
+module.exports = documentRenderer;
