@@ -63,6 +63,7 @@ ${documentContent.join('\n')}
         chapter: sectionContent('chapter'),
         section: sectionContent('section'),
         "section-main": sectionContent('section-main'),
+        subsection: sectionContent('subsection'),
 
         'import-file': function (value) {
             const fileContent = fs.readFileSync(value, { encoding: 'utf8' });

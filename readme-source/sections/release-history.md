@@ -3,6 +3,10 @@
     (title "Release History"))
 /bl-->
 
+**v1.5.0**
+
+- Introduced `subsection` type content
+
 **v1.4.0**
 
 - Introduced `section-main` type content

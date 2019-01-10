@@ -6,6 +6,7 @@ function documentUtils() {
         chapter: '##',
         "section-main": '##',
         section: '###',
+        subsection: '####',
         subtitle: '####'
     }
 
