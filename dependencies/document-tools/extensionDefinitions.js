@@ -64,7 +64,7 @@ ${documentContent.join('\n')}
         section: sectionContent('section'),
         "section-main": sectionContent('section-main'),
         subsection: sectionContent('subsection'),
-        "subsection-minor": sectionContent('subsection'),
+        "subsection-minor": sectionContent('subsection-minor'),
 
         'import-file': function (value) {
             const fileContent = fs.readFileSync(value, { encoding: 'utf8' });

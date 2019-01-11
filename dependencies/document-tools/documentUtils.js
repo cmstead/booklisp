@@ -6,12 +6,13 @@ function documentUtils() {
         chapter: '##',
         "section-main": '##',
         section: '###',
-        subsection: '####',
         "subsection-minor": '#####',
+        subsection: '####',
         subtitle: '####'
     }
 
     function buildTitleString(type, value) {
+        console.log('Title type: ', type);
         const titleFormatter = titleFormatters[type];
 
         return `${titleFormatter} ${value} ${titleFormatter}`;
