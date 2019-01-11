@@ -167,6 +167,10 @@ Upcoming Todos:
 
 ## Release History ##
 
+**v1.7.0**
+
+- Introduced `subsection-minor` type content
+
 **v1.6.0**
 
 - Introduced `subsection` type content

@@ -7,6 +7,7 @@ function documentUtils() {
         "section-main": '##',
         section: '###',
         subsection: '####',
+        "subsection-minor": '#####',
         subtitle: '####'
     }
 
