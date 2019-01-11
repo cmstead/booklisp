@@ -12,7 +12,6 @@ function documentUtils() {
     }
 
     function buildTitleString(type, value) {
-        console.log('Title type: ', type);
         const titleFormatter = titleFormatters[type];
 
         return `${titleFormatter} ${value} ${titleFormatter}`;
