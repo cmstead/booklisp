@@ -1,6 +1,6 @@
 {
   "name": "booklisp",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "A small, extremely limited lisp-like DSL for book content embedding written in Javascript",
   "main": "index.js",
   "scripts": {
