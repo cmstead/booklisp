@@ -51,8 +51,10 @@ function documentRenderer(
             .join('\n');
 
         return `
+<!-- GENERATED DOCUMENT! DO NOT EDIT! -->
 ${titleString}
 ${bodyString}
+<!-- GENERATED DOCUMENT! DO NOT EDIT! -->
     `;
     }
 
