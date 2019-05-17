@@ -13,7 +13,7 @@ function extensionDefinitions(
 
             return this._get('dict')(
                 this._get('tag')('sectionType', typeTag),
-                this._get('tag')('sectionContent', parsedContent),
+                this._get('tag')('sectionContent', parsedContent)
             );
         }
     }

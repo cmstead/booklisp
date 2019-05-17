@@ -24,9 +24,10 @@
     "approvals": "^3.0.2",
     "approvals-config-factory": "^1.0.0",
     "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "mocha": "^5.2.0"
   },
   "dependencies": {
-    "dject": "^1.10.0"
+    "dject": "^1.13.3"
   }
 }
