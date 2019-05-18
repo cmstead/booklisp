@@ -1,13 +1,14 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 const container = require('../../container');
 
 const parser = container.build('documentParser');
 
 const coreEnvironmentFactory = container.build('coreEnvironmentFactory');
 const coreDefinitions = container.build('coreDefinitions');
-const extensionDefinitions = container.build('extensionDefinitions');
+const extensionDefinitionsFactory = container.build('extensionDefinitionsFactory');
 
 require('../utils/approvals')();
 
@@ -15,16 +16,21 @@ describe('Document Evaluator', function () {
 
     let sourceContent;
     let parsedDocument;
+    let sourcePath;
 
     beforeEach(function () {
         const cwd = process.cwd();
-        const sourcePath = `${cwd}/tests/fixtures/document-parser.md`;
-        sourceContent = fs.readFileSync(sourcePath, { encoding: 'utf8' });
+        sourcePath = path.normalize(`${cwd}/tests/fixtures/`);
+
+        const sourceFilePath = `${sourcePath}document-parser.md`;
+
+        sourceContent = fs.readFileSync(sourceFilePath, { encoding: 'utf8' });
         parsedDocument = parser.parse(sourceContent);
     });
 
     it('produces a document object', function () {
-        const documentEnvironment = coreEnvironmentFactory()
+        const extensionDefinitions = extensionDefinitionsFactory.getExtensionDefinitions(sourcePath);
+        const documentEnvironment = coreEnvironmentFactory(sourcePath)
             ._merge(coreDefinitions)
             ._merge(extensionDefinitions);
 

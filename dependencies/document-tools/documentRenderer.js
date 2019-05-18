@@ -1,7 +1,7 @@
 function documentRenderer(
     coreEnvironmentFactory,
     coreDefinitions,
-    extensionDefinitions,
+    extensionDefinitionsFactory,
 
     filemetaUtils,
     documentUtils,
@@ -37,7 +37,9 @@ function documentRenderer(
         return result.concat(bodyValues);
     }
 
-    function render(parsedDocument) {
+    function render(parsedDocument, currentPath) {
+        const extensionDefinitions = extensionDefinitionsFactory.getExtensionDefinitions(currentPath);
+
         const documentEnvironment = coreEnvironmentFactory()
             ._merge(coreDefinitions)
             ._merge(extensionDefinitions);

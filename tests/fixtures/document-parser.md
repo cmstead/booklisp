@@ -9,11 +9,11 @@
 
 <!--bl
     (table-of-contents
-        (chapter "./tests/fixtures/chapter1-file.md")
-        (section-main "./tests/fixtures/chapter2-file.md")
+        (chapter "./chapter1-file.md")
+        (section-main "./chapter2-file.md")
     )
 /bl-->
 
 <!--bl
-    (section "./tests/fixtures/section-no-table-of-contents.md")
+    (section "./section-no-table-of-contents.md")
 /bl-->

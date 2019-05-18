@@ -105,7 +105,7 @@
                                     },
                                     {
                                         "type": "String",
-                                        "value": "./tests/fixtures/chapter1-file.md",
+                                        "value": "./chapter1-file.md",
                                         "childNodes": []
                                     }
                                 ]
@@ -121,7 +121,7 @@
                                     },
                                     {
                                         "type": "String",
-                                        "value": "./tests/fixtures/chapter2-file.md",
+                                        "value": "./chapter2-file.md",
                                         "childNodes": []
                                     }
                                 ]
@@ -152,7 +152,7 @@
                             },
                             {
                                 "type": "String",
-                                "value": "./tests/fixtures/section-no-table-of-contents.md",
+                                "value": "./section-no-table-of-contents.md",
                                 "childNodes": []
                             }
                         ]

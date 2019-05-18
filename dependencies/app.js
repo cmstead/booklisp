@@ -21,11 +21,15 @@ function app(
         }
 
         const fileContent = fs.readFileSync(inputFile, { encoding: 'utf8' });
+        const pathTokens = inputFile.split(/(\/|\\)/);
+        const filePath = pathTokens
+            .slice(0, pathTokens.length - 1)
+            .join('/');
 
         pipe(
             fileContent,
             (fileContent) => documentParser.parse(fileContent),
-            (parsedContent) => documentRenderer.render(parsedContent),
+            (parsedContent) => documentRenderer.render(parsedContent, filePath),
             (renderedContent) => fs.writeFileSync(outputFile, renderedContent)
         );
     }

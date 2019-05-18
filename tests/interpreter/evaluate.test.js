@@ -7,7 +7,9 @@ const fs = require('fs');
 const parser = container.build('parser');
 const coreEnvironmentFactory = container.build('coreEnvironmentFactory');
 const coreDefinitions = container.build('coreDefinitions');
-const extensionDefinitions = container.build('extensionDefinitions');
+const extensionDefinitions = container
+    .build('extensionDefinitionsFactory')
+    .getExtensionDefinitions(process.cwd());
 
 require('../utils/approvals')();
 

@@ -57,7 +57,7 @@ function documentParser(parser) {
         } else {
             return parser.parse(sourceString);
         }
-    } documentParser
+    }
 
     function addNewNode(documentNodes, currentBlock, nodeType) {
         if (currentBlock.length > 0) {

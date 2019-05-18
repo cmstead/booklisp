@@ -6,7 +6,7 @@
 This is a test of stuff.
 
 <!--
-(chapter "./tests/fixtures/chapter1-file.md")
-(chapter "./tests/fixtures/chapter1-file.md")
-(subsection "./tests/fixtures/subsection.md")
+(chapter "./chapter1-file.md")
+(chapter "./chapter1-file.md")
+(subsection "./subsection.md")
 /bl-->
