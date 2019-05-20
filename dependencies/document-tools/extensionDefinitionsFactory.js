@@ -10,8 +10,12 @@ function extensionDefinitionsFactory(
 
     function getExtensionDefinitions(currentPath) {
         function sectionContent(typeTag) {
-            return function (value) {
-                const parsedContent = this._get('import-file')(value);
+            return function (relativeFilePath) {
+                const basePath = typeof this.currentPath !== 'undefined'
+                    ? this.currentPath
+                    : currentPath;
+
+                const parsedContent = this._get('import-file')(relativeFilePath, basePath);
 
                 return this._get('dict')(
                     this._get('tag')('sectionType', typeTag),
@@ -68,12 +72,17 @@ ${documentContent.join('\n')}
             subsection: sectionContent('subsection'),
             "subsection-minor": sectionContent('subsection-minor'),
 
-            'import-file': function (filePath) {
-                const resolvedFilePath = path.normalize(path.join(currentPath, filePath));
+            'import-file': function (filePath, basePath) {
+                const resolvedFilePath = path.normalize(path.join(basePath, filePath));
                 const fileContent = fs.readFileSync(resolvedFilePath, { encoding: 'utf8' });
+                const nextPathTokens = resolvedFilePath.split(/(\\|\/)/);
+                const nextPath = nextPathTokens.slice(0, nextPathTokens.length - 1).join('/');
+
                 const environment = documentEnvironmentFactory
                     .buildBaseEnvironment()
                     ._merge(extensionDefinitions);
+
+                environment.currentPath = nextPath;
 
                 return documentParser
                     .parse(fileContent)

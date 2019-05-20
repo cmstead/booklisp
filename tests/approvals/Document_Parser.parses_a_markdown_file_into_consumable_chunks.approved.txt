@@ -105,7 +105,7 @@
                                     },
                                     {
                                         "type": "String",
-                                        "value": "./chapter1-file.md",
+                                        "value": "./chapters/chapter1-file.md",
                                         "childNodes": []
                                     }
                                 ]
@@ -121,7 +121,7 @@
                                     },
                                     {
                                         "type": "String",
-                                        "value": "./chapter2-file.md",
+                                        "value": "./chapters/chapter2-file.md",
                                         "childNodes": []
                                     }
                                 ]
@@ -152,7 +152,7 @@
                             },
                             {
                                 "type": "String",
-                                "value": "./section-no-table-of-contents.md",
+                                "value": "./sections/section-no-table-of-contents.md",
                                 "childNodes": []
                             }
                         ]
