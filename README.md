@@ -167,6 +167,10 @@ Upcoming Todos:
 
 ## Release History ##
 
+**v2.0.0**
+
+- Introduced proper relative-path management
+
 **v1.7.0**
 
 - Introduced `subsection-minor` type content
